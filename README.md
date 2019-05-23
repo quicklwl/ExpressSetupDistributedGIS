@@ -42,3 +42,7 @@
 - 脚本在软件安装路径下，以后关闭和启动服务
 	
 **五，祝顺**
+
+- 如果下载git下载不顺利，可以用从云盘下载
+- 链接：[https://pan.baidu.com/s/1IUnq4JfiwjGf566qq_XMow](https://pan.baidu.com/s/1IUnq4JfiwjGf566qq_XMow ) 
+提取码：kpq3 
