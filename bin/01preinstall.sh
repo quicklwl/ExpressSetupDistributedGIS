@@ -12,6 +12,44 @@ PROGDIR=`echo $INITDIR|awk -F/ '{for(i=(NF-2);i++<(NF-1);){for(j=0;j++<i;){print
 #加载配置文件
 source $PROGDIR/conf/init.conf
 
+if [ $INSTALL_USER == "" ]; then
+	echo "请配置安装用户！ 在conf/init.conf文件中的INSTALL_USER项。"
+	exit
+fi
+
+
+#合并压缩包
+cd $PROGDIR/soft
+SOFT_FILE_ZIP=`ls $PROGDIR/soft | grep jdk-8u171-linux-x64.tar.gz_aa | head -n 1`
+if [ "$SOFT_FILE_ZIP" != "" ]; then 
+	rm -f jdk-8u171-linux-x64.tar.gz
+    cat jdk* >jdk-8u171-linux-x64.tar.gz
+	rm -f jdk*.gz_a*
+fi
+
+SOFT_FILE_ZIP=`ls $PROGDIR/soft | grep hadoop-2.7.3.tar.gz_aa | head -n 1`
+if [ "$SOFT_FILE_ZIP" != "" ]; then 
+	rm -f hadoop-2.7.3.tar.gz
+    cat hadoop* >hadoop-2.7.3.tar.gz
+	rm -f hadoop*.gz_a*
+fi
+
+SOFT_FILE_ZIP=`ls $PROGDIR/soft | grep hbase-1.3.2-bin.tar.gz_aa | head -n 1`
+if [ "$SOFT_FILE_ZIP" != "" ]; then 
+	rm -f hbase-1.3.2-bin.tar.gz
+    cat hbase* >hbase-1.3.2-bin.tar.gz
+	rm -f hbase*.gz_a*
+fi
+
+SOFT_FILE_ZIP=`ls $PROGDIR/soft | grep spark-2.2.1-bin-hadoop2.7.tgz_aa | head -n 1`
+if [ "$SOFT_FILE_ZIP" != "" ]; then 
+	rm -f spark-2.2.1-bin-hadoop2.7.tgz
+    cat spark* >spark-2.2.1-bin-hadoop2.7.tgz
+	rm -f spark*.tgz_a*
+fi
+cd $PROGDIR
+
+
 echo "检查安装 expect"
 sh $INITDIR/installexpect.sh
 
