@@ -47,7 +47,6 @@ mv $SOFT_INSTALL_DIR/$SOFT_FILE_DIR $SOFT_INSTALL_DIR/spark
 SOFT_HOME=$SOFT_INSTALL_DIR/spark
 
 cp -f $PROGDIR/conf/spark/* $SOFT_HOME/conf
-cp -f $PROGDIR/lib/hbase/* $SOFT_HOME/jars
 
 
 for node in `awk 'NR > 1{print $2}' $PROGDIR/conf/host.conf`
